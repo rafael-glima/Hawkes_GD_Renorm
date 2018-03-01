@@ -100,28 +100,28 @@ def trainGD_QEXP(seq,eps):
 
 			#compens += (alpha/beta)*(1-np.exp(-beta*(T-seq[i])))#quad(funcexp,0,T-seq[i], args=(alpha,beta))[0]
 
-			for j in range(0,i):
+				for j in range(0,i):
 
-				if abs(q-1.) <= 0.001: #math.isclose(q, 1., rel_tol=1e-3, abs_tol=0.0):
+					if abs(q-1.) <= 0.001: #math.isclose(q, 1., rel_tol=1e-3, abs_tol=0.0):
 
-					intens[i] += alpha*np.exp(-1.*(seq[i] - seq[j]))
+						intens[i] += alpha*np.exp(-1.*(seq[i] - seq[j]))
 
-				#elif (q != 1.) and (1 + (q-1)*beta*x > 0.):
-				elif (q > 1.):
+					#elif (q != 1.) and (1 + (q-1)*beta*x > 0.):
+					elif (q > 1.):
 
-					intens[i] += max(alpha*np.power((1+(q-1)*(seq[i]-seq[j])),1/(1-q)),0.)
+						intens[i] += max(alpha*np.power((1+(q-1)*(seq[i]-seq[j])),1/(1-q)),0.)
 
-				elif (q < 1.) and (seq[i]-seq[j]>1/(1-q)):
+					elif (q < 1.) and (seq[i]-seq[j]>1/(1-q)):
 
-					intens[i] += 0.
+						intens[i] += 0.
 
-				elif (q < 1.) and (seq[i]-seq[j] < 1/(1-q)):
+					elif (q < 1.) and (seq[i]-seq[j] < 1/(1-q)):
 
-					intens[i] += max(alpha*np.power((1+(q-1)*(seq[i]-seq[j])),1/(1-q)),0.)				
+						intens[i] += max(alpha*np.power((1+(q-1)*(seq[i]-seq[j])),1/(1-q)),0.)				
 
-				else:
+					else:
 
-					intens[i] += 0.
+						intens[i] += 0.
 
 		print ('Loglikelihood Train GD: ' + repr(np.sum(np.nan_to_num(np.log(intens))) - compens) + '\n')
 
