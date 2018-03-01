@@ -161,11 +161,11 @@ def trainGD_QEXP(seq,eps):
 
 			par_renorm_q = par_renorm_alpha
 
-			llh_renorm_alpha = llhGD_QEXP(par_renorm_alpha)
+			llh_renorm_alpha = logGD_QEXP(par_renorm_alpha)
 
-			llh_renorm_sqrt = llhGD_QEXP(par_renorm_sqrt)
+			llh_renorm_sqrt = logGD_QEXP(par_renorm_sqrt)
 
-			llh_renorm_q = llhGD_QEXP(par_renorm_q)
+			llh_renorm_q = logGD_QEXP(par_renorm_q)
 
 			llh_renorm_alpha *= -1
 
@@ -186,11 +186,11 @@ def trainGD_QEXP(seq,eps):
 
 			par_renorm_sqrt = [par.x[0],par.x[1]/np.sqrt(statcriter*(1+eps)),2-(2-par.x[2])*np.sqrt(statcriter*(1+eps))]
 
-			llh_renorm_q = llhGD_QEXP(par_renorm_q)
+			llh_renorm_q = logGD_QEXP(par_renorm_q)
 
-			llh_renorm_alpha = llhGD_QEXP(par_renorm_alpha)
+			llh_renorm_alpha = logGD_QEXP(par_renorm_alpha)
 
-			llh_renorm_sqrt = llhGD_QEXP(par_renorm_sqrt)
+			llh_renorm_sqrt = logGD_QEXP(par_renorm_sqrt)
 
 			llh_renorm_alpha *= -1
 
@@ -212,11 +212,11 @@ def trainGD_QEXP(seq,eps):
 
 			par_renorm_sqrt = [par.x[0],par.x[1]/np.sqrt(statcriter*(1+eps)),2-(2-par.x[2])*np.sqrt(statcriter*(1+eps))]
 
-			llh_renorm_q = llhGD_QEXP(par_renorm_q)
+			llh_renorm_q = logGD_QEXP(par_renorm_q)
 
-			llh_renorm_alpha = llhGD_QEXP(par_renorm_alpha)
+			llh_renorm_alpha = logGD_QEXP(par_renorm_alpha)
 
-			llh_renorm_sqrt = llhGD_QEXP(par_renorm_sqrt)
+			llh_renorm_sqrt = logGD_QEXP(par_renorm_sqrt)
 
 			llh_renorm_alpha *= -1
 
