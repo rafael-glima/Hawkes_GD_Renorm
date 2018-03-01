@@ -27,7 +27,7 @@ def trainGD_RAY(seq,eps):
 	def logGD_RAY(RAY_coeffs):
 
 		def funcRAY(x,gamma,eta):
-			return gamma*x*np.RAY(-eta*np.power(x,2))
+			return gamma*x*np.exp(-eta*np.power(x,2))
 
 		gamma = RAY_coeffs[1];
 
@@ -51,11 +51,11 @@ def trainGD_RAY(seq,eps):
 
 			#############  REVER ESSA PARTE !!!!!!!!!!!!! ##################################################
 
-			compens += (gamma/(2*eta))*(1-np.RAY(-eta*np.power(T-seq[i],2)))#quad(funcRAY,0,T-seq[i], args=(gamma,eta))[0]
+			compens += (gamma/(2*eta))*(1-np.exp(-eta*np.power(T-seq[i],2)))#quad(funcRAY,0,T-seq[i], args=(gamma,eta))[0]
 
 			for j in range(0,i):
 
-				intens[i] += gamma*(seq[i]-seq[j])*np.RAY(-eta*np.power(seq[i] - seq[j],2))			
+				intens[i] += gamma*(seq[i]-seq[j])*np.exp(-eta*np.power(seq[i] - seq[j],2))			
 
 		print ('Loglikelihood Train GD: ' + repr(np.sum(np.nan_to_num(np.log(intens))) - compens) + '\n')
 
