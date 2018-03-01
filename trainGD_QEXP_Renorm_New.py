@@ -30,11 +30,11 @@ def trainGD_QEXP(seq,eps):
 
 			print('q: '+ repr(q))
 
-			if math.isclose(q, 1., rel_tol=1e-3, abs_tol=0.0):
+			if abs(q-1.) <= 0.001: #math.isclose(q, 1., rel_tol=1e-3, abs_tol=0.0):
 
 				return alpha*np.exp((-1)*x)
 
-			else (q != 1.):
+			elif (q != 1.):
 
 				return np.max(0.,alpha*np.power(1+(q-1)*x,1/(1-q)))
 
@@ -44,7 +44,7 @@ def trainGD_QEXP(seq,eps):
 
 		mu = QEXP_coeffs[0]
 
-		if math.isclose(q, 1., rel_tol=1e-3, abs_tol=0.0):
+		if abs(q-1.) <= 0.001: #math.isclose(q, 1., rel_tol=1e-3, abs_tol=0.0):
 
 			if (alpha < 1.) and (alpha >= 0.):
 
@@ -79,7 +79,7 @@ def trainGD_QEXP(seq,eps):
 
 			intens[i] += mu;
 
-			if math.isclose(q, 1., rel_tol=1e-3, abs_tol=0.0):
+			if abs(q-1.) <= 0.001: #math.isclose(q, 1., rel_tol=1e-3, abs_tol=0.0):
 
 				compens += alpha*(1-np.exp((-1)*(T-seq[i])))
 
@@ -102,7 +102,7 @@ def trainGD_QEXP(seq,eps):
 
 			for j in range(0,i):
 
-				if math.isclose(q, 1., rel_tol=1e-3, abs_tol=0.0):
+				if abs(q-1.) <= 0.001: #math.isclose(q, 1., rel_tol=1e-3, abs_tol=0.0):
 
 					intens[i] += alpha*np.exp(-1.*(seq[i] - seq[j]))
 
@@ -149,7 +149,7 @@ def trainGD_QEXP(seq,eps):
 
 	llh_renorm_q = fin_llh
 
-	if math.isclose(q, 1., rel_tol=1e-3, abs_tol=0.0):
+	if abs(q-1.) <= 0.001: #math.isclose(q, 1., rel_tol=1e-3, abs_tol=0.0):
 
 		statcriter = alpha
 
