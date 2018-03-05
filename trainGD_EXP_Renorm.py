@@ -81,7 +81,7 @@ def trainGD_EXP(seq,eps):
 
 		llh_renorm_beta = logGD_EXP(par_renorm_beta)
 
-		ll_renorm_sqrt = logGD_EXP(par_renorm_sqrt)
+		llh_renorm_sqrt = logGD_EXP(par_renorm_sqrt)
 
 	else:
 
@@ -91,7 +91,7 @@ def trainGD_EXP(seq,eps):
 
 		llh_renorm_sqrt = fin_llh
 
-	K1_Param = {'EXP_coeffs': par.x, 'K1_Type': 'EXP', 'EXP_statcriter': par.x[1]/par.x[2], 'final_llh': fin_llh, 'llh_renorm_alpha': llh_renorm_alpha, 'llh_renorm_beta': llh_renorm_beta, 'llh_renorm_sqrt':llh_renorm_sqrt}
+	K1_Param = {'EXP_coeffs': par.x, 'K1_Type': 'EXP', 'EXP_statcriter': par.x[1]/par.x[2], 'final_llh': fin_llh, 'llh_renorm_alpha': llh_renorm_alpha, 		'llh_renorm_beta': llh_renorm_beta, 'llh_renorm_sqrt':llh_renorm_sqrt}
 
 	return K1_Param
 
