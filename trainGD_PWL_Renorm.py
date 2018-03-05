@@ -77,67 +77,67 @@ def trainGD_PWL(seq,eps):
 
 	fin_llh = (-1)*fin_llh
 
-	if np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
+	# if np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
 
-		par_renorm_K = [par.x[0]/(PWL_statcriter*(1+eps)),par.x[1],par.x[2],Delta*(1.-1./(1.+eps))]
+	par_renorm_K = [par.x[0]/(PWL_statcriter*(1+eps)),par.x[1],par.x[2],Delta*(1.-1./(1.+eps))]
 
-		par_renorm_c = [par.x[0],np.power((1+eps)*PWL_statcriter,1/par.x[2])*par.x[1],par.x[2],Delta*(1.-1./(1.+eps))]
+	par_renorm_c = [par.x[0],np.power((1+eps)*PWL_statcriter,1/par.x[2])*par.x[1],par.x[2],Delta*(1.-1./(1.+eps))]
 
-		Delta_p = PWL_statcriter*(1+eps)*(par.x[2]-1)*np.power(par.x[1],par.x[2]-1.)
+	Delta_p = PWL_statcriter*(1+eps)*(par.x[2]-1)*np.power(par.x[1],par.x[2]-1.)
 
-		par_renorm_p = [par.x[0],par.x[1],1+ lambertw(Delta_p*np.log(par.x[1])).real/np.log(par.x[1]),Delta*(1.-1./(1.+eps))]
+	par_renorm_p = [par.x[0],par.x[1],1+ lambertw(Delta_p*np.log(par.x[1])).real/np.log(par.x[1]),Delta*(1.-1./(1.+eps))]
 
-		par_renorm_Kc = [par.x[0]/np.sqrt(PWL_statcriter*(1+eps)),par.x[1]*np.power(PWL_statcriter*(1+eps),1/(2*(par.x[2]-1))),par.x[2],Delta*(1.-1./(1.+eps))]
+	par_renorm_Kc = [par.x[0]/np.sqrt(PWL_statcriter*(1+eps)),par.x[1]*np.power(PWL_statcriter*(1+eps),1/(2*(par.x[2]-1))),par.x[2],Delta*(1.-1./(1.+eps))]
 
-		Delta_Kp = np.sqrt(PWL_statcriter*(1+eps))*(par.x[2]-1)*np.power(par.x[1],par.x[2]-1.)
+	Delta_Kp = np.sqrt(PWL_statcriter*(1+eps))*(par.x[2]-1)*np.power(par.x[1],par.x[2]-1.)
 
-		par_renorm_Kp = [par.x[0]/np.sqrt(PWL_statcriter*(1+eps)),par.x[1],1+lambertw(Delta_Kp*np.log(par.x[1])).real/np.log(par.x[1]),Delta*(1.-1./(1.+eps))]
+	par_renorm_Kp = [par.x[0]/np.sqrt(PWL_statcriter*(1+eps)),par.x[1],1+lambertw(Delta_Kp*np.log(par.x[1])).real/np.log(par.x[1]),Delta*(1.-1./(1.+eps))]
 
-		# par_renorm_Kc = [par.x[0]/np.sqrt(PWL_statcriter*(1+eps)),np.power((1+eps)*PWL_statcriter,\
-		# 	1/(2*par.x[2]))*par.x[1],par.x[2],par.x[3]]
+	# par_renorm_Kc = [par.x[0]/np.sqrt(PWL_statcriter*(1+eps)),np.power((1+eps)*PWL_statcriter,\
+	# 	1/(2*par.x[2]))*par.x[1],par.x[2],par.x[3]]
 
-		# par_renorm_Kp = [par.x[0]/np.sqrt(PWL_statcriter*(1+eps)),par.x[1],par.x[2]+ \
-		# np.log(np.sqrt((1+eps)*PWL_statcriter))/np.log(par.x[1]),par.x[3]]
+	# par_renorm_Kp = [par.x[0]/np.sqrt(PWL_statcriter*(1+eps)),par.x[1],par.x[2]+ \
+	# np.log(np.sqrt((1+eps)*PWL_statcriter))/np.log(par.x[1]),par.x[3]]
 
-		# par_renorm_sqrt = [par.x[0]/(PWL_statcriter*np.power(1+eps,1/3)),np.power(np.power(1+eps,1/3)*PWL_statcriter,\
-		# 	1/(par.x[2]+ np.log(np.power(1+eps,1/3)*PWL_statcriter)/np.log(np.power(np.power(1+eps,1/3)*PWL_statcriter,1/par.x[2])*par.x[1])))*par.x[1],\
-		# par.x[2]+ np.log(np.power(1+eps,1/3)*PWL_statcriter)/np.log(np.power(np.power(1+eps,1/3)*PWL_statcriter,1/par.x[2])*par.x[1]),par.x[3]]
+	# par_renorm_sqrt = [par.x[0]/(PWL_statcriter*np.power(1+eps,1/3)),np.power(np.power(1+eps,1/3)*PWL_statcriter,\
+	# 	1/(par.x[2]+ np.log(np.power(1+eps,1/3)*PWL_statcriter)/np.log(np.power(np.power(1+eps,1/3)*PWL_statcriter,1/par.x[2])*par.x[1])))*par.x[1],\
+	# par.x[2]+ np.log(np.power(1+eps,1/3)*PWL_statcriter)/np.log(np.power(np.power(1+eps,1/3)*PWL_statcriter,1/par.x[2])*par.x[1]),par.x[3]]
 
-		# par_renorm_sqrt = [par.x[0]/(PWL_statcriter*np.power(1+eps,1/3)),par.x[1]*np.power(PWL_statcriter,1/par.x[2]+np.log(PWL_statcriter*\
-		# 	np.power(1+eps,1/3))/np.log(par.x[1]))*np.power(1+eps,1/3*(par.x[2]+np.log(PWL_statcriter*np.power(1+eps,1/3))/np.log(par.x[1]))),\
-		# par.x[2]+np.log(PWL_statcriter*np.power(1+eps,1/3))/np.log(par.x[1]),par.x[3]]
+	# par_renorm_sqrt = [par.x[0]/(PWL_statcriter*np.power(1+eps,1/3)),par.x[1]*np.power(PWL_statcriter,1/par.x[2]+np.log(PWL_statcriter*\
+	# 	np.power(1+eps,1/3))/np.log(par.x[1]))*np.power(1+eps,1/3*(par.x[2]+np.log(PWL_statcriter*np.power(1+eps,1/3))/np.log(par.x[1]))),\
+	# par.x[2]+np.log(PWL_statcriter*np.power(1+eps,1/3))/np.log(par.x[1]),par.x[3]]
 
-		llh_renorm_K = logGD_PWL(par_renorm_K)
+	llh_renorm_K = logGD_PWL(par_renorm_K)
 
-		llh_renorm_c = logGD_PWL(par_renorm_c)
+	llh_renorm_c = logGD_PWL(par_renorm_c)
 
-		llh_renorm_p = logGD_PWL(par_renorm_p)
+	llh_renorm_p = logGD_PWL(par_renorm_p)
 
-		llh_renorm_Kc = logGD_PWL(par_renorm_Kc)
+	llh_renorm_Kc = logGD_PWL(par_renorm_Kc)
 
-		llh_renorm_Kp = logGD_PWL(par_renorm_Kp)
+	llh_renorm_Kp = logGD_PWL(par_renorm_Kp)
 
-		llh_renorm_K *= -1
+	llh_renorm_K *= -1
 
-		llh_renorm_c *= -1
+	llh_renorm_c *= -1
 
-		llh_renorm_p *= -1
+	llh_renorm_p *= -1
 
-		llh_renorm_Kc *= -1
+	llh_renorm_Kc *= -1
 
-		llh_renorm_Kp *= -1
+	llh_renorm_Kp *= -1
 
-	else:
+	# else:
 
-		llh_renorm_K = fin_llh
+	# 	llh_renorm_K = fin_llh
 
-		llh_renorm_c = fin_llh
+	# 	llh_renorm_c = fin_llh
 
-		llh_renorm_p = fin_llh
+	# 	llh_renorm_p = fin_llh
 
-		llh_renorm_Kc = fin_llh
+	# 	llh_renorm_Kc = fin_llh
 
-		llh_renorm_Kp = fin_llh
+	# 	llh_renorm_Kp = fin_llh
 
 	K1_Param = {'PWL_coeffs': par.x, 'K1_Type': 'PWL', 'PWL_statcriter': ((par.x[2]-1)*par.x[0]*(par.x[1]**(1-par.x[2]))), 'final_llh': fin_llh,\
 	 'llh_renorm_K': llh_renorm_K, 'llh_renorm_c': llh_renorm_c, 'llh_renorm_p': llh_renorm_p, 'llh_renorm_Kc': llh_renorm_Kc,\

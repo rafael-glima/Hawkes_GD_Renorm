@@ -71,32 +71,32 @@ def trainGD_RAY(seq,eps):
 
 	fin_llh = (-1)*fin_llh
 
-	if np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
+#	if np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
 
-		par_renorm_gamma = [Delta*(1.-1./(1.+eps)),par.x[1]/(RAY_statcriter*(1+eps)),par.x[2]]
+	par_renorm_gamma = [Delta*(1.-1./(1.+eps)),par.x[1]/(RAY_statcriter*(1+eps)),par.x[2]]
 
-		par_renorm_eta = [Delta*(1.-1./(1.+eps)),par.x[1],par.x[2]*(RAY_statcriter*(1+eps))]
+	par_renorm_eta = [Delta*(1.-1./(1.+eps)),par.x[1],par.x[2]*(RAY_statcriter*(1+eps))]
 
-		par_renorm_sqrt = [Delta*(1.-1./(1.+eps)),par.x[1]/np.sqrt(RAY_statcriter*(1+eps)),par.x[2]*np.sqrt(RAY_statcriter*(1+eps))]
+	par_renorm_sqrt = [Delta*(1.-1./(1.+eps)),par.x[1]/np.sqrt(RAY_statcriter*(1+eps)),par.x[2]*np.sqrt(RAY_statcriter*(1+eps))]
 
-		llh_renorm_gamma = logGD_RAY(par_renorm_gamma)
+	llh_renorm_gamma = logGD_RAY(par_renorm_gamma)
 
-		llh_renorm_eta = logGD_RAY(par_renorm_eta)
+	llh_renorm_eta = logGD_RAY(par_renorm_eta)
 
-		llh_renorm_sqrt = logGD_RAY(par_renorm_sqrt)
+	llh_renorm_sqrt = logGD_RAY(par_renorm_sqrt)
 
-		K1_Param = {'RAY_coeffs': par.x, 'K1_Type': 'RAY', 'RAY_statcriter': par.x[1]/par.x[2], 'final_llh': fin_llh, 'par_renorm_gamma': par_renorm_gamma,\
-		'llh_renorm_gamma': llh_renorm_gamma, 'par_renorm_eta': par_renorm_eta, 'llh_renorm_eta': llh_renorm_eta, 'par_renorm_sqrt': par_renorm_sqrt, 'llh_renorm_sqrt':llh_renorm_sqrt}
+	K1_Param = {'RAY_coeffs': par.x, 'K1_Type': 'RAY', 'RAY_statcriter': par.x[1]/par.x[2], 'final_llh': fin_llh, 'par_renorm_gamma': par_renorm_gamma,\
+	'llh_renorm_gamma': llh_renorm_gamma, 'par_renorm_eta': par_renorm_eta, 'llh_renorm_eta': llh_renorm_eta, 'par_renorm_sqrt': par_renorm_sqrt, 'llh_renorm_sqrt':llh_renorm_sqrt}
 
-	else:
+	# else:
 
-		llh_renorm_gamma = fin_llh
+	# 	llh_renorm_gamma = fin_llh
 
-		llh_renorm_eta = fin_llh
+	# 	llh_renorm_eta = fin_llh
 
-		llh_renorm_sqrt = fin_llh
+	# 	llh_renorm_sqrt = fin_llh
 
-		K1_Param = {'RAY_coeffs': par.x, 'K1_Type': 'RAY', 'RAY_statcriter': par.x[1]/par.x[2], 'final_llh': fin_llh,\
-		'llh_renorm_gamma': llh_renorm_gamma, 'llh_renorm_eta': llh_renorm_eta, 'llh_renorm_sqrt':llh_renorm_sqrt}
+	# 	K1_Param = {'RAY_coeffs': par.x, 'K1_Type': 'RAY', 'RAY_statcriter': par.x[1]/par.x[2], 'final_llh': fin_llh,\
+	# 	'llh_renorm_gamma': llh_renorm_gamma, 'llh_renorm_eta': llh_renorm_eta, 'llh_renorm_sqrt':llh_renorm_sqrt}
 
 	return K1_Param

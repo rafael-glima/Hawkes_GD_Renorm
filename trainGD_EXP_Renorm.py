@@ -69,27 +69,27 @@ def trainGD_EXP(seq,eps):
 
 	fin_llh = (-1)*fin_llh
 
-	if np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
+#	if np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
 
-		par_renorm_alpha = [Delta*(1.-1./(1.+eps)),par.x[1]/(EXP_statcriter*(1+eps)),par.x[2]]
+	par_renorm_alpha = [Delta*(1.-1./(1.+eps)),par.x[1]/(EXP_statcriter*(1+eps)),par.x[2]]
 
-		par_renorm_beta = [Delta*(1.-1./(1.+eps)),par.x[1],par.x[2]*(1+eps)]
+	par_renorm_beta = [Delta*(1.-1./(1.+eps)),par.x[1],par.x[2]*(1+eps)]
 
-		par_renorm_sqrt = [Delta*(1.-1./(1.+eps)),par.x[1]/np.sqrt(EXP_statcriter*(1+eps)),par.x[2]*np.sqrt(1+eps)]
+	par_renorm_sqrt = [Delta*(1.-1./(1.+eps)),par.x[1]/np.sqrt(EXP_statcriter*(1+eps)),par.x[2]*np.sqrt(1+eps)]
 
-		llh_renorm_alpha = logGD_EXP(par_renorm_alpha)
+	llh_renorm_alpha = logGD_EXP(par_renorm_alpha)
 
-		llh_renorm_beta = logGD_EXP(par_renorm_beta)
+	llh_renorm_beta = logGD_EXP(par_renorm_beta)
 
-		llh_renorm_sqrt = logGD_EXP(par_renorm_sqrt)
+	llh_renorm_sqrt = logGD_EXP(par_renorm_sqrt)
 
-	else:
+#	else:
 
-		llh_renorm_alpha = fin_llh
+		# llh_renorm_alpha = fin_llh
 
-		llh_renorm_beta = fin_llh
+		# llh_renorm_beta = fin_llh
 
-		llh_renorm_sqrt = fin_llh
+		# llh_renorm_sqrt = fin_llh
 
 	K1_Param = {'EXP_coeffs': par.x, 'K1_Type': 'EXP', 'EXP_statcriter': par.x[1]/par.x[2], 'final_llh': fin_llh, 'llh_renorm_alpha': llh_renorm_alpha, 		'llh_renorm_beta': llh_renorm_beta, 'llh_renorm_sqrt':llh_renorm_sqrt}
 
