@@ -30,23 +30,23 @@ resolution = 40
 
 llh_GD_EXP = np.array([])
 llh_GD_PWL = np.array([])
-llh_GD_QXP = np.array([])
+llh_GD_QEXP = np.array([])
 llh_GD_RAY = np.array([])
 
 llh_GD_EXP_Renorm_alpha = np.array([])
 llh_GD_PWL_Renorm_K = np.array([])
-llh_GD_QXP_Renorm_a = np.array([])
+llh_GD_QEXP_Renorm_a = np.array([])
 llh_GD_RAY_Renorm_gamma = np.array([])
 
 llh_GD_EXP_Renorm_beta = np.array([])
 llh_GD_PWL_Renorm_c = np.array([])
 llh_GD_PWL_Renorm_p = np.array([])
-llh_GD_QXP_Renorm_q = np.array([])
+llh_GD_QEXP_Renorm_q = np.array([])
 llh_GD_RAY_Renorm_eta = np.array([])
 
 llh_GD_EXP_Renorm_alphabeta = np.array([])
 llh_GD_PWL_Renorm_Kc = np.array([])
-llh_GD_QXP_Renorm_aq = np.array([])
+llh_GD_QEXP_Renorm_aq = np.array([])
 llh_GD_RAY_Renorm_gammaeta = np.array([])
 
 llh_GD_PWL_Renorm_Kp = np.array([])
