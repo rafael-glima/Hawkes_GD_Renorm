@@ -44,10 +44,10 @@ def trainGD_PWL(seq,eps):
 		phi = K*np.power(c,1.-p)/(1.-p)
 
 		if (phi < 1.) and (K >= 0.) and (c > 0.) and (p > 1.):
-		 	mu = (1.-phi)*Delta;
+		 	mu = mu#(1.-phi)*Delta;
 		else:
-			mu = 0. 
-			return np.inf
+			mu = mu#0. 
+			#return np.inf
 
 		intens = np.zeros(len(seq));
 
@@ -77,21 +77,21 @@ def trainGD_PWL(seq,eps):
 
 	fin_llh = (-1)*fin_llh
 
-	if np.isinf(fin_llh):
+	if np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
 
-		par_renorm_K = [par.x[0]/(PWL_statcriter*(1+eps)),par.x[1],par.x[2],par.x[3]]
+		par_renorm_K = [par.x[0]/(PWL_statcriter*(1+eps)),par.x[1],par.x[2],Delta*(1.-1./(1.+eps))]
 
-		par_renorm_c = [par.x[0],np.power((1+eps)*PWL_statcriter,1/par.x[2])*par.x[1],par.x[2],par.x[3]]
+		par_renorm_c = [par.x[0],np.power((1+eps)*PWL_statcriter,1/par.x[2])*par.x[1],par.x[2],Delta*(1.-1./(1.+eps))]
 
 		Delta_p = PWL_statcriter*(1+eps)*(par.x[2]-1)*np.power(par.x[1],par.x[2]-1.)
 
-		par_renorm_p = [par.x[0],par.x[1],1+ lambertw(Delta_p*np.log(par.x[1])).real/np.log(par.x[1]),par.x[3]]
+		par_renorm_p = [par.x[0],par.x[1],1+ lambertw(Delta_p*np.log(par.x[1])).real/np.log(par.x[1]),Delta*(1.-1./(1.+eps))]
 
-		par_renorm_Kc = [par.x[0]/np.sqrt(PWL_statcriter*(1+eps)),par.x[1]*np.power(PWL_statcriter*(1+eps),1/(2*(par.x[2]-1))),par.x[2],par.x[3]]
+		par_renorm_Kc = [par.x[0]/np.sqrt(PWL_statcriter*(1+eps)),par.x[1]*np.power(PWL_statcriter*(1+eps),1/(2*(par.x[2]-1))),par.x[2],Delta*(1.-1./(1.+eps))]
 
 		Delta_Kp = np.sqrt(PWL_statcriter*(1+eps))*(par.x[2]-1)*np.power(par.x[1],par.x[2]-1.)
 
-		par_renorm_Kp = [par.x[0]/np.sqrt(PWL_statcriter*(1+eps)),par.x[1],1+lambertw(Delta_Kp*np.log(par.x[1])).real/np.log(par.x[1]),par.x[3]]
+		par_renorm_Kp = [par.x[0]/np.sqrt(PWL_statcriter*(1+eps)),par.x[1],1+lambertw(Delta_Kp*np.log(par.x[1])).real/np.log(par.x[1]),Delta*(1.-1./(1.+eps))]
 
 		# par_renorm_Kc = [par.x[0]/np.sqrt(PWL_statcriter*(1+eps)),np.power((1+eps)*PWL_statcriter,\
 		# 	1/(2*par.x[2]))*par.x[1],par.x[2],par.x[3]]

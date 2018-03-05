@@ -55,11 +55,11 @@ def trainGD_QEXP(seq,eps):
 
 			if (alpha/beta < 1.) and (alpha/beta >= 0.):
 
-				mu = (1.-alpha/beta)*Delta;
+				mu = mu #(1.-alpha/beta)*Delta;
 
 			else:
 
-				mu = 0. 
+				#mu = 0. 
 				return np.inf
 
 		#elif (q != 1.) and (1 + (q-1)*beta*x > 0.):
@@ -67,12 +67,12 @@ def trainGD_QEXP(seq,eps):
 
 			if (alpha*(q-1)/(beta*(2-q)) < 1.) and (alpha*(q-1)/(beta*(2-q)) > 0.):
 
-				mu = (1.- alpha*(q-1)/(beta*(2-q)))*Delta;
+				mu = mu#(1.- alpha*(q-1)/(beta*(2-q)))*Delta;
 
 			else:
 
-				mu = 0.
-				return np.inf
+				mu = mu#0.
+				#return np.inf
 
 		else:
 
@@ -152,11 +152,11 @@ def trainGD_QEXP(seq,eps):
 
 		if statcriter >= 1.:
 
-			par_renorm_alpha = [par.x[0],par.x[1]/(1+eps),par.x[2],par.x[3]]
+			par_renorm_alpha = [Delta*(1-statcriter),par.x[1]/(1+eps),par.x[2],par.x[3]]
 
-			par_renorm_beta = [par.x[0],par.x[1],par.x[2]*(1+eps),par.x[3]]
+			par_renorm_beta = [Delta*(1-statcriter),par.x[1],par.x[2]*(1+eps),par.x[3]]
 
-			par_renorm_sqrt = [par.x[0],par.x[1]/np.sqrt(1+eps),par.x[2]*np.sqrt(1+eps),par.x[3]]
+			par_renorm_sqrt = [Delta*(1-statcriter),par.x[1]/np.sqrt(1+eps),par.x[2]*np.sqrt(1+eps),par.x[3]]
 
 			par_renorm_q = par_renorm_sqrt
 

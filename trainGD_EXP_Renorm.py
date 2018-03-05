@@ -36,10 +36,10 @@ def trainGD_EXP(seq,eps):
 		mu = EXP_coeffs[0]
 
 		if (alpha/beta < 1.) and (alpha/beta >= 0.):
-			mu = (1.-alpha/beta)*Delta;
+			mu = mu#(1.-alpha/beta)*Delta;
 		else:
-			mu = 0. 
-			return np.inf
+			mu = mu#0. 
+			#return np.inf
 
 		intens = np.zeros(len(seq));
 
@@ -69,13 +69,13 @@ def trainGD_EXP(seq,eps):
 
 	fin_llh = (-1)*fin_llh
 
-	if np.isinf(fin_llh):
+	if np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
 
-		par_renorm_alpha = [par.x[0],par.x[1]/(EXP_statcriter*(1+eps)),par.x[2]]
+		par_renorm_alpha = [Delta*(1.-1./(1.+eps)),par.x[1]/(EXP_statcriter*(1+eps)),par.x[2]]
 
-		par_renorm_beta = [par.x[0],par.x[1],par.x[2]*(1+eps)]
+		par_renorm_beta = [Delta*(1.-1./(1.+eps)),par.x[1],par.x[2]*(1+eps)]
 
-		par_renorm_sqrt = [par.x[0],par.x[1]/np.sqrt(EXP_statcriter*(1+eps)),par.x[2]*np.sqrt(1+eps)]
+		par_renorm_sqrt = [Delta*(1.-1./(1.+eps)),par.x[1]/np.sqrt(EXP_statcriter*(1+eps)),par.x[2]*np.sqrt(1+eps)]
 
 		llh_renorm_alpha = logGD_EXP(par_renorm_alpha)
 

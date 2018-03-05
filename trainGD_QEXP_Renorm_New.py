@@ -48,24 +48,24 @@ def trainGD_QEXP(seq,eps):
 
 			if (alpha < 1.) and (alpha >= 0.):
 
-				mu = (1.-alpha)*Delta;
+				mu = mu#(1.-alpha)*Delta;
 
 			else:
 
-				mu = 0. 
-				return np.inf
+				mu = mu#0. 
+				#return np.inf
 
 		#elif (q != 1.) and (1 + (q-1)*beta*x > 0.):
 		elif (q != 1.):
 
 			if (alpha/(2-q) < 1.) and (alpha/(2-q) > 0.) and (alpha > 0.):
 
-				mu = (1.- alpha/(2-q))*Delta;
+				mu = mu#(1.- alpha/(2-q))*Delta;
 
 			else:
 
-				mu = 0.
-				return np.inf
+				mu = mu#0.
+				#return np.inf
 
 		else:
 
@@ -149,13 +149,13 @@ def trainGD_QEXP(seq,eps):
 
 	llh_renorm_q = fin_llh
 
-	if abs(q-1.) <= 0.001: #math.isclose(q, 1., rel_tol=1e-3, abs_tol=0.0):
+	if abs(q-1.) <= 0.001 : #math.isclose(q, 1., rel_tol=1e-3, abs_tol=0.0):
 
 		statcriter = alpha
 
-		if statcriter >= 1.:
+		if (statcriter >= 1.) or np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
 
-			par_renorm_alpha = [par.x[0],par.x[1]/(statcriter*(1+eps)),par.x[2]]
+			par_renorm_alpha = [Delta*(1.-1./(1.+eps)),par.x[1]/(statcriter*(1+eps)),par.x[2]]
 
 			par_renorm_sqrt = par_renorm_alpha
 
@@ -178,13 +178,13 @@ def trainGD_QEXP(seq,eps):
 
 		statcriter = alpha/(2-q)
 
-		if statcriter >= 1.:
+		if (statcriter >= 1.) or np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
 
-			par_renorm_q = [par.x[0],par.x[1],2-(2-par.x[2])*(statcriter*(1+eps))]
+			par_renorm_q = [Delta*(1.-1./(1.+eps)),par.x[1],2-(2-par.x[2])*(statcriter*(1+eps))]
 
-			par_renorm_alpha = [par.x[0],par.x[1]/(statcriter*(1+eps)),par.x[2]]
+			par_renorm_alpha = [Delta*(1.-1./(1.+eps)),par.x[1]/(statcriter*(1+eps)),par.x[2]]
 
-			par_renorm_sqrt = [par.x[0],par.x[1]/np.sqrt(statcriter*(1+eps)),2-(2-par.x[2])*np.sqrt(statcriter*(1+eps))]
+			par_renorm_sqrt = [Delta*(1.-1./(1.+eps)),par.x[1]/np.sqrt(statcriter*(1+eps)),2-(2-par.x[2])*np.sqrt(statcriter*(1+eps))]
 
 			llh_renorm_q = logGD_QEXP(par_renorm_q)
 
@@ -204,13 +204,13 @@ def trainGD_QEXP(seq,eps):
 
 		statcriter = alpha/(2-q)
 
-		if statcriter >= 1.:
+		if (statcriter >= 1.) or np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
 
-			par_renorm_q = [par.x[0],par.x[1],2-(2-par.x[2])*(statcriter*(1+eps))]
+			par_renorm_q = [Delta*(1.-1./(1.+eps)),par.x[1],2-(2-par.x[2])*(statcriter*(1+eps))]
 
-			par_renorm_alpha = [par.x[0],par.x[1]/(statcriter*(1+eps)),par.x[2]]
+			par_renorm_alpha = [Delta*(1.-1./(1.+eps)),par.x[1]/(statcriter*(1+eps)),par.x[2]]
 
-			par_renorm_sqrt = [par.x[0],par.x[1]/np.sqrt(statcriter*(1+eps)),2-(2-par.x[2])*np.sqrt(statcriter*(1+eps))]
+			par_renorm_sqrt = [Delta*(1.-1./(1.+eps)),par.x[1]/np.sqrt(statcriter*(1+eps)),2-(2-par.x[2])*np.sqrt(statcriter*(1+eps))]
 
 			llh_renorm_q = logGD_QEXP(par_renorm_q)
 

@@ -36,10 +36,10 @@ def trainGD_RAY(seq,eps):
 		mu = RAY_coeffs[0]
 
 		if (gamma/(2*eta) < 1.) and (gamma/(2*eta) >= 0.):
-			mu = (1.-gamma/(2*eta))*Delta;
+			mu = mu#(1.-gamma/(2*eta))*Delta;
 		else:
-			mu = 0. 
-			return np.inf
+			mu = mu#0. 
+			#return np.inf
 
 		intens = np.zeros(len(seq));
 
@@ -71,13 +71,13 @@ def trainGD_RAY(seq,eps):
 
 	fin_llh = (-1)*fin_llh
 
-	if np.isinf(fin_llh):
+	if np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
 
-		par_renorm_gamma = [par.x[0],par.x[1]/(RAY_statcriter*(1+eps)),par.x[2]]
+		par_renorm_gamma = [Delta*(1.-1./(1.+eps)),par.x[1]/(RAY_statcriter*(1+eps)),par.x[2]]
 
-		par_renorm_eta = [par.x[0],par.x[1],par.x[2]*(RAY_statcriter*(1+eps))]
+		par_renorm_eta = [Delta*(1.-1./(1.+eps)),par.x[1],par.x[2]*(RAY_statcriter*(1+eps))]
 
-		par_renorm_sqrt = [par.x[0],par.x[1]/np.sqrt(RAY_statcriter*(1+eps)),par.x[2]*np.sqrt(RAY_statcriter*(1+eps))]
+		par_renorm_sqrt = [Delta*(1.-1./(1.+eps)),par.x[1]/np.sqrt(RAY_statcriter*(1+eps)),par.x[2]*np.sqrt(RAY_statcriter*(1+eps))]
 
 		llh_renorm_gamma = logGD_RAY(par_renorm_gamma)
 
