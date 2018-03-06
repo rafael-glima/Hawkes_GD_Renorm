@@ -9,7 +9,7 @@ def trainGD_RAY(seq,eps):
 	#eps = np.finfo(float).eps
 
 	gamma_0 = np.random.rand()
-	eta_0 = 2*gamma_0
+	eta_0 = np.random.rand() #2*gamma_0
 	mu_0 = np.random.rand()
 
 	# input_data = scipy.io.loadmat('4Kern_newSNS_10seqT100000_highMuandfreq0.15.mat')
@@ -66,6 +66,8 @@ def trainGD_RAY(seq,eps):
 	print('Final Parameters: '+ repr(par.x)+'\n')
 
 	RAY_statcriter = par.x[1]/(2*par.x[2])
+
+	print('RAY_statcriter: ' + repr(RAY_statcriter))
 
 	fin_llh = logGD_RAY(par.x)
 
