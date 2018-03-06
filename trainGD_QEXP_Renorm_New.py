@@ -12,6 +12,8 @@ def trainGD_QEXP(seq,eps):
 	q_0 = 1. + np.random.rand()
 	mu_0 = np.random.rand()
 
+	epsilon = np.finfo(float).eps
+
 	# input_data = scipy.io.loadmat('4Kern_newSNS_10seqT100000_highMuandfreq0.15.mat')
 	# seq = input_data['Seq2'][1][0][0]
 
@@ -36,7 +38,7 @@ def trainGD_QEXP(seq,eps):
 
 			elif (q != 1.):
 
-				return np.max(0.,alpha*np.power(1+(q-1)*x,1/(1-q)))
+				return np.max(0.,alpha*np.power(1+(q-1)*x+epsilon,1/(1-q)))
 
 		alpha = QEXP_coeffs[1];
 
@@ -86,7 +88,7 @@ def trainGD_QEXP(seq,eps):
 			#elif (q != 1.) and (1 + (q-1)*beta*x > 0.):
 			elif (q > 1.) and (q < 2.):
 
-				compens += (alpha/(2-q))*(np.power(1+(q-1)*(T-seq[i]), (2-q)/(1-q))-1)
+				compens += (alpha/(2-q))*(np.power(1+(q-1)*(T-seq[i])+epsilon, (2-q)/(1-q))-1)
 
 			elif (q < 1.) and (T-seq[i]>=1/(1-q)):
 
@@ -94,7 +96,7 @@ def trainGD_QEXP(seq,eps):
 
 			elif (q < 1.) and (T - seq[i] < 1/(1-q)):
 
-				compens += (alpha/(q-2.))*np.power(1.+(q-1.)*(T-seq[i]),(2-q)/(1-q)) - alpha/(q-2)
+				compens += (alpha/(q-2.))*np.power(1.+(q-1.)*(T-seq[i])+epsilon,(2-q)/(1-q)) - alpha/(q-2)
 
 			else:  
 
@@ -109,7 +111,7 @@ def trainGD_QEXP(seq,eps):
 					#elif (q != 1.) and (1 + (q-1)*beta*x > 0.):
 					elif (q > 1.):
 
-						intens[i] += max(alpha*np.power((1+(q-1)*(seq[i]-seq[j])),1/(1-q)),0.)
+						intens[i] += max(alpha*np.power((1+(q-1)*(seq[i]-seq[j]))+epsilon,1/(1-q)),0.)
 
 					elif (q < 1.) and (seq[i]-seq[j]>1/(1-q)):
 
@@ -117,7 +119,7 @@ def trainGD_QEXP(seq,eps):
 
 					elif (q < 1.) and (seq[i]-seq[j] < 1/(1-q)):
 
-						intens[i] += max(alpha*np.power((1+(q-1)*(seq[i]-seq[j])),1/(1-q)),0.)				
+						intens[i] += max(alpha*np.power((1+(q-1)*(seq[i]-seq[j]))+epsilon,1/(1-q)),0.)				
 
 					else:
 
@@ -224,6 +226,7 @@ def trainGD_QEXP(seq,eps):
 
 			llh_renorm_q *= -1	
 
+	print('QEXP_statcriter: ' + repr(statcriter))
 
 	K1_Param = {'QEXP_coeffs': par.x, 'K1_Type': 'QEXP', 'QEXP_statcriter': statcriter, 'final_llh': fin_llh, 'llh_renorm_alpha': llh_renorm_alpha, \
 	'llh_renorm_q': llh_renorm_q, 'llh_renorm_sqrt': llh_renorm_sqrt}

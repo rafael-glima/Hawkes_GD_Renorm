@@ -8,7 +8,7 @@ import math
 def trainGD_QEXP(seq,eps):
 
 	alpha_0 = np.random.rand()
-	beta_0 = 2*alpha_0
+	beta_0 = np.random.rand() #2*alpha_0
 	q_0 = 1. + np.random.rand()
 	mu_0 = np.random.rand()
 
@@ -210,6 +210,7 @@ def trainGD_QEXP(seq,eps):
 	else:
 
 		statcriter = 0.
+	print('QEXP_statcriter: ' + repr(statcriter))
 
 	K1_Param = {'QEXP_coeffs': par.x, 'K1_Type': 'QEXP', 'QEXP_statcriter': statcriter, 'final_llh': fin_llh, 'llh_renorm_alpha': llh_renorm_alpha, \
 	'llh_renorm_beta': llh_renorm_beta,'llh_renorm_q': llh_renorm_q, 'llh_renorm_sqrt': llh_renorm_sqrt}

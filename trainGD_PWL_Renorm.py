@@ -16,7 +16,7 @@ def trainGD_PWL(seq,eps):
 	# p_0 = 2.13085285
 
 	K_0 = np.random.rand()
-	c_0 = 2*K_0
+	c_0 = np.random.rand() #2*K_0
 	p_0 = 1. + np.random.rand()
 
 	# input_data = scipy.io.loadmat('4Kern_newSNS_10seqT100000_highMuandfreq0.15.mat')
@@ -30,14 +30,16 @@ def trainGD_PWL(seq,eps):
 
 	def logGD_PWL(PWL_coeffs):
 
+		epsilon = np.finfo(float).eps
+
 		def funcpwl(x,K,c,p):
 			return K*np.power(x+c,-p)
 
-		K = PWL_coeffs[0];
+		K = PWL_coeffs[0]
 
-		c = PWL_coeffs[1];
+		c = PWL_coeffs[1]
 
-		p = PWL_coeffs[2];
+		p = PWL_coeffs[2]
 
 		mu = PWL_coeffs[3]
 		
@@ -57,11 +59,11 @@ def trainGD_PWL(seq,eps):
 
 			intens[i] += mu;
 
-			compens += K*np.power(T-seq[i]+c,1-p)/(1-p) - K*np.power(c,1-p)/(1-p);#quad(funcpwl,0,T-seq[i], args=(K,c,p))[0] #(alpha/beta)*(1-np.exp(-beta*(T-seq[i])))
+			compens += K*np.power(T-seq[i]+c+epsilon,1-p)/(1-p) - K*np.power(c+epsilon,1-p)/(1-p);#quad(funcpwl,0,T-seq[i], args=(K,c,p))[0] #(alpha/beta)*(1-np.exp(-beta*(T-seq[i])))
 
 			for j in range(0,i):
 
-				intens[i] += K*np.power((seq[i] - seq[j])+c,-p)			
+				intens[i] += K*np.power((seq[i] - seq[j])+c+epsilon,-p)			
 
 		print ('Loglikelihood Train GD: ' + repr(np.sum(np.nan_to_num(np.log(intens))) - compens) + '\n')
 
@@ -72,6 +74,8 @@ def trainGD_PWL(seq,eps):
 	print('Final Parameters: '+ repr(par.x)+'\n')
 
 	PWL_statcriter = ((par.x[2]-1)*par.x[0]*(par.x[1]**(1-par.x[2])))
+
+	print('PWL_statcriter: ' + repr(PWL_statcriter))
 
 	fin_llh = logGD_PWL(par.x)
 
