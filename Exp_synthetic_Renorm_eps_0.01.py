@@ -77,23 +77,23 @@ for i in range(1,5):
 		llh_GD_QEXP = np.append(llh_GD_QEXP,QEXP_Param['final_llh'])
 		llh_GD_RAY = np.append(llh_GD_RAY,RAY_Param['final_llh'])
 
-		llh_GD_EXP_Renorm_alpha = np.append(llh_GD_EXP,EXP_Param['llh_renorm_alpha'])
-		llh_GD_PWL_Renorm_K = np.append(llh_GD_PWL,PWL_Param['llh_renorm_K'])
-		llh_GD_QEXP_Renorm_a = np.append(llh_GD_QEXP,QEXP_Param['llh_renorm_alpha'])
-		llh_GD_RAY_Renorm_gamma = np.append(llh_GD_RAY,RAY_Param['llh_renorm_gamma'])
+		llh_GD_EXP_Renorm_alpha = np.append(llh_GD_EXP_Renorm_alpha,EXP_Param['llh_renorm_alpha'])
+		llh_GD_PWL_Renorm_K = np.append(llh_GD_PWL_Renorm_K,PWL_Param['llh_renorm_K'])
+		llh_GD_QEXP_Renorm_a = np.append(llh_GD_QEXP_Renorm_a,QEXP_Param['llh_renorm_alpha'])
+		llh_GD_RAY_Renorm_gamma = np.append(llh_GD_RAY_Renorm_gamma,RAY_Param['llh_renorm_gamma'])
 
-		llh_GD_EXP_Renorm_beta = np.append(llh_GD_EXP,EXP_Param['llh_renorm_beta'])
-		llh_GD_PWL_Renorm_c = np.append(llh_GD_PWL,PWL_Param['llh_renorm_c'])
-		llh_GD_PWL_Renorm_p = np.append(llh_GD_PWL,PWL_Param['llh_renorm_p'])
-		llh_GD_QEXP_Renorm_q = np.append(llh_GD_QEXP,QEXP_Param['llh_renorm_q'])
-		llh_GD_RAY_Renorm_eta = np.append(llh_GD_RAY,RAY_Param['llh_renorm_eta'])
+		llh_GD_EXP_Renorm_beta = np.append(llh_GD_EXP_Renorm_beta,EXP_Param['llh_renorm_beta'])
+		llh_GD_PWL_Renorm_c = np.append(llh_GD_PWL_Renorm_c,PWL_Param['llh_renorm_c'])
+		llh_GD_PWL_Renorm_p = np.append(llh_GD_PWL_Renorm_p,PWL_Param['llh_renorm_p'])
+		llh_GD_QEXP_Renorm_q = np.append(llh_GD_QEXP_Renorm_q,QEXP_Param['llh_renorm_q'])
+		llh_GD_RAY_Renorm_eta = np.append(llh_GD_RAY_Renorm_eta,RAY_Param['llh_renorm_eta'])
 
-		llh_GD_EXP_Renorm_alphabeta = np.append(llh_GD_EXP,EXP_Param['llh_renorm_sqrt'])
-		llh_GD_PWL_Renorm_Kc = np.append(llh_GD_PWL,PWL_Param['llh_renorm_Kc'])
-		llh_GD_QEXP_Renorm_aq = np.append(llh_GD_QEXP,QEXP_Param['llh_renorm_sqrt'])
-		llh_GD_RAY_Renorm_gammaeta = np.append(llh_GD_RAY,RAY_Param['llh_renorm_sqrt'])
+		llh_GD_EXP_Renorm_alphabeta = np.append(llh_GD_EXP_Renorm_alphabeta,EXP_Param['llh_renorm_sqrt'])
+		llh_GD_PWL_Renorm_Kc = np.append(llh_GD_PWL_Renorm_p,PWL_Param['llh_renorm_Kc'])
+		llh_GD_QEXP_Renorm_aq = np.append(llh_GD_QEXP_Renorm_aq,QEXP_Param['llh_renorm_sqrt'])
+		llh_GD_RAY_Renorm_gammaeta = np.append(llh_GD_RAY_Renorm_gammaeta,RAY_Param['llh_renorm_sqrt'])
 
-		llh_GD_PWL_Renorm_Kp = np.append(llh_GD_PWL,PWL_Param['llh_renorm_Kp'])
+		llh_GD_PWL_Renorm_Kp = np.append(llh_GD_PWL_Renorm_Kp,PWL_Param['llh_renorm_Kp'])
 
 
 		
