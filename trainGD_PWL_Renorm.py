@@ -47,6 +47,7 @@ def trainGD_PWL(seq,eps):
 
 		if (phi < 1.) and (K >= 0.) and (c > 0.) and (p > 1.):
 		 	mu = mu#(1.-phi)*Delta;
+		 	print("ill-conditioned parameters!")
 		else:
 			mu = mu#0. 
 			#return np.inf
