@@ -49,7 +49,7 @@ def trainGD_PWL(seq,eps):
 		 	mu = mu#(1.-phi)*Delta;
 		else:
 			mu = mu#0. 
-			print("ill-conditioned parameters!")
+			#print("ill-conditioned parameters!")
 			#return np.inf
 
 		intens = np.zeros(len(seq));
@@ -60,21 +60,21 @@ def trainGD_PWL(seq,eps):
 
 			intens[i] += mu;
 
-			print("T-seq[i]+c+epsilon: "+ repr(T-seq[i]+c+epsilon))
+			#print("T-seq[i]+c+epsilon: "+ repr(T-seq[i]+c+epsilon))
 
-			print("c:" + repr(c))
+			#print("c:" + repr(c))
 
-			print("T-seq[i]: "+ repr(T-seq[i]))
+			#print("T-seq[i]: "+ repr(T-seq[i]))
 
-			print(K*np.power(T-seq[i]+c+epsilon,1-p)/(1-p))
+			#print(K*np.power(T-seq[i]+c+epsilon,1-p)/(1-p))
 
-			print(K*np.power(c+epsilon,1-p)/(1-p))
+			#print(K*np.power(c+epsilon,1-p)/(1-p))
 
-			print('(1-p): ' + repr((1-p)))
+			#print('(1-p): ' + repr((1-p)))
 
 			compens += K*np.power(T-seq[i]+c+epsilon,1-p)/(1-p+epsilon) - K*np.power(c+epsilon,1-p)/(1-p+epsilon)#quad(funcpwl,0,T-seq[i], args=(K,c,p))[0] #(alpha/beta)*(1-np.exp(-beta*(T-seq[i])))
 
-			print('compens: ' + repr(compens))
+			#print('compens: ' + repr(compens))
 
 			for j in range(0,i):
 
