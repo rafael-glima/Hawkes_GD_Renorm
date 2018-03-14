@@ -59,6 +59,8 @@ def trainGD_PWL(seq,eps):
 
 			intens[i] += mu;
 
+			print("T-seq[i]+c+epsilon: "+ repr(T-seq[i]+c+epsilon))
+
 			print(K*np.power(T-seq[i]+c+epsilon,1-p)/(1-p))
 
 			print(K*np.power(c+epsilon,1-p)/(1-p))
