@@ -7,7 +7,7 @@ from scipy.special import lambertw
 
 def trainGD_PWL(seq,eps):
 
-	T = seq[-1]-seq[0]
+	T = seq[-1]#-seq[0]
 	Delta = len(seq)/T
 
 	mu_0 = Delta

@@ -17,7 +17,7 @@ def trainGD_RAY(seq,eps):
 
 	# seq = seq[:300]
 
-	T = seq[-1]-seq[0]
+	T = seq[-1]#-seq[0]
 	Delta = len(seq)/T
 
 	#seq = np.array([1.,2.,3.,4.,5.])
