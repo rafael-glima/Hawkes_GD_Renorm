@@ -115,7 +115,7 @@ def trainGD_QEXP(seq,eps):
 
 					elif (q < 1.) and (seq[i]-seq[j]>1/(1-q)):
 
-						intens[i] += 0.
+						intens[i] += epsilon
 
 					elif (q < 1.) and (seq[i]-seq[j] < 1/(1-q)):
 
@@ -123,7 +123,7 @@ def trainGD_QEXP(seq,eps):
 
 					else:
 
-						intens[i] += 0.
+						intens[i] += epsilon
 
 		print ('Loglikelihood Train GD: ' + repr(np.sum(np.nan_to_num(np.log(intens))) - compens) + '\n')
 
@@ -200,6 +200,12 @@ def trainGD_QEXP(seq,eps):
 
 			llh_renorm_q *= -1	
 
+			print('par_renorm_alpha: '+repr(par_renorm_alpha))
+
+			print('par_renorm_sqrt: ' + repr(par_renorm_sqrt))
+
+			print('par_renorm_q: '+repr(par_renorm_q))
+
 	else:
 
 		q = 2/(1+eps)
@@ -226,7 +232,20 @@ def trainGD_QEXP(seq,eps):
 
 			llh_renorm_q *= -1	
 
+			print('par_renorm_alpha: '+repr(par_renorm_alpha))
+
+                        print('par_renorm_sqrt: ' + repr(par_renorm_sqrt))
+
+                        print('par_renorm_q: '+repr(par_renorm_q))
+
+
 	print('QEXP_statcriter: ' + repr(statcriter))
+
+	print('llh_renorm_alpha:' + repr(llh_renorm_alpha))
+
+	print('llh_renorm_sqrt: '+repr(llh_renorm_sqrt))
+
+	print('llh_renorm_q: ' + repr(llh_renorm_q))
 
 	K1_Param = {'QEXP_coeffs': par.x, 'K1_Type': 'QEXP', 'QEXP_statcriter': statcriter, 'final_llh': fin_llh, 'llh_renorm_alpha': llh_renorm_alpha, \
 	'llh_renorm_q': llh_renorm_q, 'llh_renorm_sqrt': llh_renorm_sqrt}

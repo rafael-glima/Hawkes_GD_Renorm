@@ -79,11 +79,30 @@ def trainGD_EXP(seq,eps):
 
 	par_renorm_sqrt = [Delta*(1.-1./(1.+eps)),par.x[1]/np.sqrt(EXP_statcriter*(1+eps)),par.x[2]*np.sqrt(1+eps)]
 
+	print('par_renorm_alpha: '+repr(par_renorm_alpha))
+
+	print('par_renorm_beta: ' + repr(par_renorm_beta))
+
+	print('par_renorm_sqrt: ' + repr(par_renorm_sqrt))
+
 	llh_renorm_alpha = logGD_EXP(par_renorm_alpha)
 
 	llh_renorm_beta = logGD_EXP(par_renorm_beta)
 
 	llh_renorm_sqrt = logGD_EXP(par_renorm_sqrt)
+
+	llh_renorm_alpha *= -1
+
+	llh_renorm_beta *= -1
+
+	llh_renorm_sqrt *= -1
+
+	print('llh_renorm_alpha: '+repr(llh_renorm_alpha))
+
+	print('llh_renorm_beta: '+repr(llh_renorm_beta))
+
+	print('llh_renorm_sqrt: '+ repr(llh_renorm_sqrt))
+
 
 #	else:
 

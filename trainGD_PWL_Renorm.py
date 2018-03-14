@@ -131,6 +131,26 @@ def trainGD_PWL(seq,eps):
 
 	llh_renorm_Kp *= -1
 
+	print('par_renorm_K: '+repr(par_renorm_K))
+
+	print('par_renorm_c: '+repr(par_renorm_c))
+
+	print('par_renorm_p: '+repr(par_renorm_p))
+
+	print('par_renorm_Kc: '+repr(par_renorm_Kc))
+
+	print('par_renorm_Kp: '+repr(par_renorm_Kp))
+
+	print('llh_renorm_K: '+repr(llh_renorm_K))
+
+	print('llh_renorm_c: '+ repr(llh_renorm_c))
+
+	print('llh_renorm_p: '+repr(llh_renorm_p))
+
+	print('llh_renorm_Kc:'+repr(llh_renorm_Kc))
+
+	print('llh_renorm_Kp: '+repr(llh_renorm_Kp))
+
 	# else:
 
 	# 	llh_renorm_K = fin_llh

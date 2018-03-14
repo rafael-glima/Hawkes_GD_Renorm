@@ -87,6 +87,24 @@ def trainGD_RAY(seq,eps):
 
 	llh_renorm_sqrt = logGD_RAY(par_renorm_sqrt)
 
+	llh_renorm_gamma *= -1
+
+	llh_renorm_eta *= -1
+
+	llh_renorm_sqrt  *= -1
+
+	print('par_renorm_gamma: '+repr(par_renorm_gamma))
+
+	print('par_renorm_eta: '+repr(par_renorm_eta))
+
+	print('par_renorm_sqrt: '+repr(par_renorm_sqrt))
+
+	print('llh_renorm_gamma: '+repr(llh_renorm_gamma))
+
+	print('llh_renorm_eta: '+repr(llh_renorm_eta))
+
+	print('llh_renorm_sqrt: '+repr(llh_renorm_sqrt))
+
 	K1_Param = {'RAY_coeffs': par.x, 'K1_Type': 'RAY', 'RAY_statcriter': par.x[1]/par.x[2], 'final_llh': fin_llh, 'par_renorm_gamma': par_renorm_gamma,\
 	'llh_renorm_gamma': llh_renorm_gamma, 'par_renorm_eta': par_renorm_eta, 'llh_renorm_eta': llh_renorm_eta, 'par_renorm_sqrt': par_renorm_sqrt, 'llh_renorm_sqrt':llh_renorm_sqrt}
 
