@@ -4,6 +4,7 @@ import scipy.io
 import math
 import matplotlib.pyplot as plt
 import random as rd
+rd.seed(2018)
 
 import pandas as pd
 import datetime as DT

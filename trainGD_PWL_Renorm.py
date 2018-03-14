@@ -61,9 +61,13 @@ def trainGD_PWL(seq,eps):
 
 			compens += K*np.power(T-seq[i]+c+epsilon,1-p)/(1-p) - K*np.power(c+epsilon,1-p)/(1-p);#quad(funcpwl,0,T-seq[i], args=(K,c,p))[0] #(alpha/beta)*(1-np.exp(-beta*(T-seq[i])))
 
+			print('compens: ' + repr(compens))
+
 			for j in range(0,i):
 
-				intens[i] += K*np.power((seq[i] - seq[j])+c+epsilon,-p)			
+				intens[i] += K*np.power((seq[i] - seq[j])+c+epsilon,-p)
+
+				print('intens: ' + repr(intens))			
 
 		print ('Loglikelihood Train GD: ' + repr(np.sum(np.nan_to_num(np.log(intens))) - compens) + '\n')
 
