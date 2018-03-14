@@ -63,7 +63,9 @@ def trainGD_PWL(seq,eps):
 
 			print(K*np.power(c+epsilon,1-p)/(1-p))
 
-			compens += K*np.power(T-seq[i]+c+epsilon,1-p)/(1-p) - K*np.power(c+epsilon,1-p)/(1-p)#quad(funcpwl,0,T-seq[i], args=(K,c,p))[0] #(alpha/beta)*(1-np.exp(-beta*(T-seq[i])))
+			print('(1-p): ' + repr((1-p)))
+
+			compens += K*np.power(T-seq[i]+c+epsilon,1-p)/(1-p+epsilon) - K*np.power(c+epsilon,1-p)/(1-p+epsilon)#quad(funcpwl,0,T-seq[i], args=(K,c,p))[0] #(alpha/beta)*(1-np.exp(-beta*(T-seq[i])))
 
 			print('compens: ' + repr(compens))
 
