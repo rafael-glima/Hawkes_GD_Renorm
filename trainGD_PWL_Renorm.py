@@ -67,7 +67,7 @@ def trainGD_PWL(seq,eps):
 
 				intens[i] += K*np.power((seq[i] - seq[j])+c+epsilon,-p)
 
-				print('intens: ' + repr(intens))			
+				#print('intens: ' + repr(intens))			
 
 		print ('Loglikelihood Train GD: ' + repr(np.sum(np.nan_to_num(np.log(intens))) - compens) + '\n')
 
