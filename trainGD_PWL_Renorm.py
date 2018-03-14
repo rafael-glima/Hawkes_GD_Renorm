@@ -59,7 +59,11 @@ def trainGD_PWL(seq,eps):
 
 			intens[i] += mu;
 
-			compens += K*np.power(T-seq[i]+c+epsilon,1-p)/(1-p) - K*np.power(c+epsilon,1-p)/(1-p);#quad(funcpwl,0,T-seq[i], args=(K,c,p))[0] #(alpha/beta)*(1-np.exp(-beta*(T-seq[i])))
+			print(K*np.power(T-seq[i]+c+epsilon,1-p)/(1-p))
+
+			print(K*np.power(c+epsilon,1-p)/(1-p))
+
+			compens += K*np.power(T-seq[i]+c+epsilon,1-p)/(1-p) - K*np.power(c+epsilon,1-p)/(1-p)#quad(funcpwl,0,T-seq[i], args=(K,c,p))[0] #(alpha/beta)*(1-np.exp(-beta*(T-seq[i])))
 
 			print('compens: ' + repr(compens))
 
@@ -67,7 +71,7 @@ def trainGD_PWL(seq,eps):
 
 				intens[i] += K*np.power((seq[i] - seq[j])+c+epsilon,-p)
 
-				print('intens: ' + repr(intens))			
+				#print('intens: ' + repr(intens))			
 
 		print ('Loglikelihood Train GD: ' + repr(np.sum(np.nan_to_num(np.log(intens))) - compens) + '\n')
 
