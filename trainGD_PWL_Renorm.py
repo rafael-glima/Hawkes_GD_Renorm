@@ -62,6 +62,10 @@ def trainGD_PWL(seq,eps):
 
 			print("T-seq[i]+c+epsilon: "+ repr(T-seq[i]+c+epsilon))
 
+			print("c:" + repr(c))
+
+			print("T-seq[i]: "+ repr(T-seq[i]))
+
 			print(K*np.power(T-seq[i]+c+epsilon,1-p)/(1-p))
 
 			print(K*np.power(c+epsilon,1-p)/(1-p))
