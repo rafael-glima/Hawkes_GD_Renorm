@@ -4,6 +4,7 @@ import numpy as np
 from scipy.integrate import quad
 from scipy.special import lambertw
 #import numpy.random as np.random
+np.random.seed(2018)
 
 def trainGD_PWL(seq,eps):
 

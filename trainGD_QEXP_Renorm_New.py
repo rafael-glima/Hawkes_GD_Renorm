@@ -4,6 +4,7 @@ import numpy as np
 from scipy.integrate import quad
 import math
 #import numpy.random as np.random
+np.random.seed(2018)
 
 def trainGD_QEXP(seq,eps):
 
@@ -125,7 +126,7 @@ def trainGD_QEXP(seq,eps):
 
 						intens[i] += epsilon
 
-				print('intens: ' + repr(intens))
+				#print('intens: ' + repr(intens))
 
 		print ('Loglikelihood Train GD: ' + repr(np.sum(np.nan_to_num(np.log(intens))) - compens) + '\n')
 
