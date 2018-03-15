@@ -72,7 +72,7 @@ def trainGD_RAY(seq,eps):
 
 	print('Final Parameters: '+ repr(par.x)+'\n')
 
-	RAY_statcriter = par.x[1]/(2*par.x[2])
+	RAY_statcriter = abs(par.x[1]/(2*par.x[2]))
 
 	print('RAY_statcriter: ' + repr(RAY_statcriter))
 

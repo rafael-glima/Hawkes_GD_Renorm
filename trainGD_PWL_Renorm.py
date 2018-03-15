@@ -93,7 +93,7 @@ def trainGD_PWL(seq,eps):
 
 	print('Final Parameters: '+ repr(par.x)+'\n')
 
-	PWL_statcriter = ((par.x[2]-1)*par.x[0]*(par.x[1]**(1-par.x[2])))
+	PWL_statcriter = abs(((par.x[2]-1)*par.x[0]*(par.x[1]**(1-par.x[2]))))
 
 	print('PWL_statcriter: ' + repr(PWL_statcriter))
 

@@ -66,7 +66,7 @@ def trainGD_EXP(seq,eps):
 
 	print('Final Parameters: '+ repr(par.x)+'\n')
 
-	EXP_statcriter = par.x[1]/par.x[2]
+	EXP_statcriter = abs(par.x[1]/par.x[2])
 
 	print('EXP_statcriter:' + repr(EXP_statcriter))
 
