@@ -87,7 +87,7 @@ def trainGD_PWL(seq,eps):
 
 		print ('Loglikelihood Train GD: ' + repr(np.sum(np.nan_to_num(np.log(intens))) - compens) + '\n')
 
-		return - np.sum(np.nan_to_num(np.log(intens))) + compens
+		return - np.sum(np.nan_to_num(np.log(intens))) + max(compens,0.)
 
 	par = minimize(logGD_PWL, [K_0, c_0, p_0, mu_0], method='nelder-mead', tol=1e-2, options={'maxiter':10})
 

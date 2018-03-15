@@ -66,7 +66,7 @@ def trainGD_RAY(seq,eps):
 
 		print ('Loglikelihood Train GD: ' + repr(np.sum(np.nan_to_num(np.log(intens))) - compens) + '\n')
 
-		return - np.sum(np.nan_to_num(np.log(intens))) + compens
+		return - np.sum(np.nan_to_num(np.log(intens))) + max(compens,0.)
 
 	par = minimize(logGD_RAY, [mu_0, gamma_0, eta_0], method='Nelder-Mead', tol=1e-2, options={'maxiter':10})
 

@@ -60,7 +60,7 @@ def trainGD_EXP(seq,eps):
 
 		print ('Loglikelihood Train GD: ' + repr(np.sum(np.nan_to_num(np.log(intens))) - compens) + '\n')
 
-		return - np.sum(np.nan_to_num(np.log(intens))) + compens
+		return - np.sum(np.nan_to_num(np.log(intens))) + max(compens,0.)
 
 	par = minimize(logGD_EXP, [mu_0, alpha_0, beta_0], method='Nelder-Mead', tol=1e-2, options={'maxiter':10})
 
