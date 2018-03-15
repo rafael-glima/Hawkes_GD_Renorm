@@ -3,6 +3,7 @@ from scipy.optimize import minimize
 import numpy as np
 from scipy.integrate import quad
 #import numpy.random as np.random
+np.random.seed(2018)
 
 def trainGD_RAY(seq,eps):
 
