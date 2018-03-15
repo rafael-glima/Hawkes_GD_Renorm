@@ -62,6 +62,8 @@ def trainGD_RAY(seq,eps):
 
 			#print('intens_i: '+repr(intens))
 
+		intens[intens < 0.] = 0.	
+
 		print ('Loglikelihood Train GD: ' + repr(np.sum(np.nan_to_num(np.log(intens))) - compens) + '\n')
 
 		return - np.sum(np.nan_to_num(np.log(intens))) + compens

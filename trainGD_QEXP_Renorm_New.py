@@ -128,6 +128,8 @@ def trainGD_QEXP(seq,eps):
 
 				#print('intens: ' + repr(intens))
 
+				intens[intens < 0.] = 0.
+
 		print ('Loglikelihood Train GD: ' + repr(np.sum(np.nan_to_num(np.log(intens))) - compens) + '\n')
 
 		return - np.sum(np.nan_to_num(np.log(intens))) + compens
