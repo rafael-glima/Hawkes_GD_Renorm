@@ -54,7 +54,9 @@ def trainGD_EXP(seq,eps):
 
 			for j in range(0,i):
 
-				intens[i] += alpha*np.exp(-beta*(seq[i] - seq[j]))			
+				intens[i] += alpha*np.exp(-beta*(seq[i] - seq[j]))
+		
+		intens[intens < 0.] = 0.			
 
 		print ('Loglikelihood Train GD: ' + repr(np.sum(np.nan_to_num(np.log(intens))) - compens) + '\n')
 
