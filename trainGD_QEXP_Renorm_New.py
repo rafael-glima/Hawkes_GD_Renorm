@@ -158,7 +158,7 @@ def trainGD_QEXP(seq,eps):
 
 	if abs(q-1.) <= 0.001 : #math.isclose(q, 1., rel_tol=1e-3, abs_tol=0.0):
 
-		statcriter = alpha
+		statcriter = abs(alpha)
 
 		if (statcriter >= 1.) or np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
 
@@ -183,7 +183,7 @@ def trainGD_QEXP(seq,eps):
 	#elif (q != 1.) and (1 + (q-1)*beta*x > 0.):
 	elif (q != 1.) and (q < 2.):
 
-		statcriter = alpha/(2-q)
+		statcriter = abs(alpha/(2-q))
 
 		if (statcriter >= 1.) or np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
 
@@ -209,7 +209,7 @@ def trainGD_QEXP(seq,eps):
 
 		q = 2/(1+eps)
 
-		statcriter = alpha/(2-q)
+		statcriter = abs(alpha/(2-q))
 
 		if (statcriter >= 1.) or np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
 
