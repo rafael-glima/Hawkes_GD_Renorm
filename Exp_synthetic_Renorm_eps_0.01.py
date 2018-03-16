@@ -22,7 +22,7 @@ from trainGD_PWL_Renorm import trainGD_PWL
 from trainGD_QEXP_Renorm_New import trainGD_QEXP
 from trainGD_RAY_Renorm import trainGD_RAY
 
-input_data = scipy.io.loadmat('4Kern_Renorm_10seq_T1000.mat')
+input_data = scipy.io.loadmat('4Kern_Renorm_10seq_T5000.mat')
 
 eps = 0.01
 
@@ -120,7 +120,7 @@ print('llh_GD_RAY_Renorm_gamma: ' + repr(llh_GD_RAY_Renorm_gamma) + '\n')
 print('llh_GD_RAY_Renorm_eta: ' + repr(llh_GD_RAY_Renorm_eta) + '\n')
 print('llh_GD_RAY_Renorm_gammaeta: ' + repr(llh_GD_RAY_Renorm_gammaeta) + '\n')
 
-f = open('Exp_Synthetic_Renorm_T1000_eps_0.01.txt','w')
+f = open('Exp_Synthetic_Renorm_T5000_eps_0.01.txt','w')
 f.write('llh_GD_EXP: ' + repr(llh_GD_EXP) + '\n')
 f.write('llh_GD_EXP_Renorm_alpha: ' + repr(llh_GD_EXP_Renorm_alpha) + '\n')
 f.write('llh_GD_EXP_Renorm_beta: ' + repr(llh_GD_EXP_Renorm_beta) + '\n')
