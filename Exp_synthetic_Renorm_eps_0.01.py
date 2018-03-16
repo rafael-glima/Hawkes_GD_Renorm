@@ -145,3 +145,6 @@ f.write('llh_GD_RAY_Renorm_gammaeta: ' + repr(llh_GD_RAY_Renorm_gammaeta) + '\n'
 
 f.close()
 
+np.savez('llh_arrays_eps_0.01.npz', llh_GD_EXP=llh_GD_EXP,llh_GD_EXP_Renorm_alpha=llh_GD_EXP_Renorm_alpha,llh_GD_EXP_Renorm_beta=llh_GD_EXP_Renorm_beta,llh_GD_EXP_Renorm_alphabeta=llh_GD_EXP_Renorm_alphabeta,\llh_GD_PWL=llh_GD_PWL,llh_GD_PWL_Renorm_K=llh_GD_PWL_Renorm_K,llh_GD_PWL_Renorm_c=llh_GD_PWL_Renorm_c,llh_GD_PWL_Renorm_p=llh_GD_PWL_Renorm_p,llh_GD_PWL_Renorm_Kc=llh_GD_PWL_Renorm_Kc\
+,llh_GD_PWL_Renorm_Kp=llh_GD_PWL_Renorm_Kp,llh_GD_QEXP=llh_GD_QEXP,llh_GD_QEXP_Renorm_a=llh_GD_QEXP_Renorm_a,llh_GD_QEXP_Renorm_q=llh_GD_QEXP_Renorm_q,llh_GD_QEXP_Renorm_aq=llh_GD_QEXP_Renorm_aq\
+,llh_GD_RAY=llh_GD_RAY,llh_GD_RAY_Renorm_gamma=llh_GD_RAY_Renorm_gamma,llh_GD_RAY_Renorm_eta=llh_GD_RAY_Renorm_eta,llh_GD_RAY_Renorm_gammaeta=llh_GD_RAY_Renorm_gammaeta]))
