@@ -26,9 +26,10 @@ switch pattern
     case 'rayleigh'
         g = weight*exp(-decayr*power(t,2))
     case 'q-exponential'
-        if (q ~= 1)  && (1+(1-q)*t)
-            g = weight*(1+(1-q)*t)^(1/(1-q))
-        elseif (q==1)
+        if (q ~= 1.)
+            g = weight*(1+(1-q).*t).^(1/(1-q))
+	    g(g<0.) == 0.
+        elseif (q==1.)
             g = weight*exp(-t)
         else
             g = 0.	
