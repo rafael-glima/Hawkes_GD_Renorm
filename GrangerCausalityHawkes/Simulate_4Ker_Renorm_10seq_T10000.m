@@ -18,7 +18,7 @@ close all
 
 addpath('./Simulate/');
 % time interval of sequence
-para.N = 10;%5000;
+para.N = 20;%5000;
 para.T = 10000;
 para.U = 1;
 % intrinsic intensity matrix
@@ -63,11 +63,11 @@ Seq3 = SimMultiHawkes( para, 'q-exponential' );
 Seq4 = SimMultiHawkes( para, 'rayleigh' );
 
  
-save('4Kern_Renorm_10seq_T10000.mat','Seq1','Seq2','Seq3','Seq4','para'); 
+save('4Kern_Renorm_20seq_T10000.mat','Seq1','Seq2','Seq3','Seq4','para'); 
 %save('Sine_10seqT100000_oldfreq0.3.mat','Seq4','para');
 
 %load Sine_10seqT100000_oldfreq0.3.mat
-load 4Kern_Renorm_10seq_T10000.mat
+load 4Kern_Renorm_20seq_T10000.mat
 
 figure
 % subplot(2,2,1);
