@@ -110,7 +110,7 @@ print('lllh_GD_PWL_Renorm_p: ' + repr(llh_GD_PWL_Renorm_p) + '\n')
 print('llh_GD_PWL_Renorm_Kc: ' + repr(llh_GD_PWL_Renorm_Kc) + '\n')
 print('llh_GD_PWL_Renorm_Kp: ' + repr(llh_GD_PWL_Renorm_Kp) + '\n')
 max_PWL_Renorm = np.maximum.reduce([llh_GD_PWL_Renorm_K,llh_GD_PWL_Renorm_c,llh_GD_PWL_Renorm_p])
-max_PWL_Renorm = np.maximum.reduce([max_PWL_Renorm,llh_GD_PWL_Renorm_Kc,llh_GD_PWL_Renorm_Kp])
+max_PWL_Renorm = np.maximum.reduce([max_PWL_Renorm,llh_GD_PWL_Renorm_Kc[:-1],llh_GD_PWL_Renorm_Kp])
 
 print('llh_GD_QEXP: ' + repr(llh_GD_QEXP) + '\n')
 print('llh_GD_QEXP_Renorm_a: ' + repr(llh_GD_QEXP_Renorm_a) + '\n')
