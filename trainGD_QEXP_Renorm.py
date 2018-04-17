@@ -154,11 +154,11 @@ def trainGD_QEXP(seq,eps):
 
 		if statcriter >= 1.:
 
-			par_renorm_alpha = [Delta*(1-statcriter),par.x[1]/(1+eps),par.x[2],par.x[3]]
+			par_renorm_alpha = [Delta*(1-1/(1.+eps)),par.x[1]/(1+eps),par.x[2],par.x[3]]
 
-			par_renorm_beta = [Delta*(1-statcriter),par.x[1],par.x[2]*(1+eps),par.x[3]]
+			par_renorm_beta = [Delta*(1-1/(1.+eps)),par.x[1],par.x[2]*(1+eps),par.x[3]]
 
-			par_renorm_sqrt = [Delta*(1-statcriter),par.x[1]/np.sqrt(1+eps),par.x[2]*np.sqrt(1+eps),par.x[3]]
+			par_renorm_sqrt = [Delta*(1-1/(1.+eps)),par.x[1]/np.sqrt(1+eps),par.x[2]*np.sqrt(1+eps),par.x[3]]
 
 			par_renorm_q = par_renorm_sqrt
 
@@ -185,7 +185,7 @@ def trainGD_QEXP(seq,eps):
 
 		if statcriter >= 1.:
 
-			par_renorm_q = [par.x[0],par.x[1],par.x[2],(par.x[3]*(statcriter+1)+2+eps-2*statcriter)/(2+eps)]
+			par_renorm_q = [Delta*(1-1/(1+eps)),par.x[1],par.x[2],(par.x[3]*(statcriter+1)+2+eps-2*statcriter)/(2+eps)]
 
 			par_renorm_alpha = par_renorm_q
 
