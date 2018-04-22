@@ -160,56 +160,56 @@ def trainGD_QEXP(seq,eps):
 
 		statcriter = abs(alpha)
 
-		if (statcriter >= 1.) or np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
+		#if (statcriter >= 1.) or np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
 
-			par_renorm_alpha = [Delta*(1.-1./(1.+eps)),par.x[1]/(statcriter*(1+eps)),par.x[2]]
+		par_renorm_alpha = [Delta*(1.-1./(1.+eps)),par.x[1]/(statcriter*(1+eps)),par.x[2]]
 
-			par_renorm_sqrt = par_renorm_alpha
+		par_renorm_sqrt = par_renorm_alpha
 
-			par_renorm_q = par_renorm_alpha
+		par_renorm_q = par_renorm_alpha
 
-			llh_renorm_alpha = logGD_QEXP(par_renorm_alpha)
+		llh_renorm_alpha = logGD_QEXP(par_renorm_alpha)
 
-			llh_renorm_sqrt = logGD_QEXP(par_renorm_sqrt)
+		llh_renorm_sqrt = logGD_QEXP(par_renorm_sqrt)
 
-			llh_renorm_q = logGD_QEXP(par_renorm_q)
+		llh_renorm_q = logGD_QEXP(par_renorm_q)
 
-			llh_renorm_alpha *= -1
+		llh_renorm_alpha *= -1
 
-			llh_renorm_sqrt *= -1
+		llh_renorm_sqrt *= -1
 
-			llh_renorm_q *= -1			
+		llh_renorm_q *= -1			
 
 	#elif (q != 1.) and (1 + (q-1)*beta*x > 0.):
 	elif (q != 1.) and (q < 2.):
 
 		statcriter = abs(alpha/(2-q))
 
-		if (statcriter >= 1.) or np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
+		#if (statcriter >= 1.) or np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
 
-			par_renorm_q = [Delta*(1.-1./(1.+eps)),par.x[1],2-(2-par.x[2])*(statcriter*(1+eps))]
+		par_renorm_q = [Delta*(1.-1./(1.+eps)),par.x[1],2-(2-par.x[2])*(statcriter*(1+eps))]
 
-			par_renorm_alpha = [Delta*(1.-1./(1.+eps)),par.x[1]/(statcriter*(1+eps)),par.x[2]]
+		par_renorm_alpha = [Delta*(1.-1./(1.+eps)),par.x[1]/(statcriter*(1+eps)),par.x[2]]
 
-			par_renorm_sqrt = [Delta*(1.-1./(1.+eps)),par.x[1]/np.sqrt(statcriter*(1+eps)),2-(2-par.x[2])*np.sqrt(statcriter*(1+eps))]
+		par_renorm_sqrt = [Delta*(1.-1./(1.+eps)),par.x[1]/np.sqrt(statcriter*(1+eps)),2-(2-par.x[2])*np.sqrt(statcriter*(1+eps))]
 
-			llh_renorm_q = logGD_QEXP(par_renorm_q)
+		llh_renorm_q = logGD_QEXP(par_renorm_q)
 
-			llh_renorm_alpha = logGD_QEXP(par_renorm_alpha)
+		llh_renorm_alpha = logGD_QEXP(par_renorm_alpha)
 
-			llh_renorm_sqrt = logGD_QEXP(par_renorm_sqrt)
+		llh_renorm_sqrt = logGD_QEXP(par_renorm_sqrt)
 
-			llh_renorm_alpha *= -1
+		llh_renorm_alpha *= -1
 
-			llh_renorm_sqrt *= -1
+		llh_renorm_sqrt *= -1
 
-			llh_renorm_q *= -1	
+		llh_renorm_q *= -1	
 
-			print('par_renorm_alpha: '+repr(par_renorm_alpha))
+		print('par_renorm_alpha: '+repr(par_renorm_alpha))
 
-			print('par_renorm_sqrt: ' + repr(par_renorm_sqrt))
+		print('par_renorm_sqrt: ' + repr(par_renorm_sqrt))
 
-			print('par_renorm_q: '+repr(par_renorm_q))
+		print('par_renorm_q: '+repr(par_renorm_q))
 
 	else:
 
@@ -217,31 +217,31 @@ def trainGD_QEXP(seq,eps):
 
 		statcriter = abs(alpha/(2-q))
 
-		if (statcriter >= 1.) or np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):
+		#if np.isinf(fin_llh) or np.isnan(fin_llh) or (fin_llh > 0.):# or (statcriter >= 1.):
 
-			par_renorm_q = [Delta*(1.-1./(1.+eps)),par.x[1],2-(2-par.x[2])*(statcriter*(1+eps))]
+		par_renorm_q = [Delta*(1.-1./(1.+eps)),par.x[1],2-(2-par.x[2])*(statcriter*(1+eps))]
 
-			par_renorm_alpha = [Delta*(1.-1./(1.+eps)),par.x[1]/(statcriter*(1+eps)),par.x[2]]
+		par_renorm_alpha = [Delta*(1.-1./(1.+eps)),par.x[1]/(statcriter*(1+eps)),par.x[2]]
 
-			par_renorm_sqrt = [Delta*(1.-1./(1.+eps)),par.x[1]/np.sqrt(statcriter*(1+eps)),2-(2-par.x[2])*np.sqrt(statcriter*(1+eps))]
+		par_renorm_sqrt = [Delta*(1.-1./(1.+eps)),par.x[1]/np.sqrt(statcriter*(1+eps)),2-(2-par.x[2])*np.sqrt(statcriter*(1+eps))]
 
-			llh_renorm_q = logGD_QEXP(par_renorm_q)
+		llh_renorm_q = logGD_QEXP(par_renorm_q)
 
-			llh_renorm_alpha = logGD_QEXP(par_renorm_alpha)
+		llh_renorm_alpha = logGD_QEXP(par_renorm_alpha)
 
-			llh_renorm_sqrt = logGD_QEXP(par_renorm_sqrt)
+		llh_renorm_sqrt = logGD_QEXP(par_renorm_sqrt)
 
-			llh_renorm_alpha *= -1
+		llh_renorm_alpha *= -1
 
-			llh_renorm_sqrt *= -1
+		llh_renorm_sqrt *= -1
 
-			llh_renorm_q *= -1	
+		llh_renorm_q *= -1	
 
-			print('par_renorm_alpha: '+repr(par_renorm_alpha))
+		print('par_renorm_alpha: '+repr(par_renorm_alpha))
 
-                        print('par_renorm_sqrt: ' + repr(par_renorm_sqrt))
+        print('par_renorm_sqrt: ' + repr(par_renorm_sqrt))
 
-                        print('par_renorm_q: '+repr(par_renorm_q))
+        print('par_renorm_q: '+repr(par_renorm_q))
 
 
 	print('QEXP_statcriter: ' + repr(statcriter))

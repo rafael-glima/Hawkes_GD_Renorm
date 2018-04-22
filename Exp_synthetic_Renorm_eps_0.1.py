@@ -22,11 +22,11 @@ from trainGD_PWL_Renorm import trainGD_PWL
 from trainGD_QEXP_Renorm_New import trainGD_QEXP
 from trainGD_RAY_Renorm import trainGD_RAY
 
-input_data = scipy.io.loadmat('4Kern_Renorm_20seq_T1000.mat')
+input_data = scipy.io.loadmat('4Kern_Renorm_10seq_T1000.mat')
 
 eps = 0.1
 
-n_of_seq = 20
+n_of_seq = 10
 
 resolution = 40
 
@@ -103,6 +103,7 @@ print('llh_GD_EXP_Renorm_alpha: ' + repr(llh_GD_EXP_Renorm_alpha) + '\n')
 print('llh_GD_EXP_Renorm_beta: ' + repr(llh_GD_EXP_Renorm_beta) + '\n')
 print('llh_GD_EXP_Renorm_alphabeta: ' + repr(llh_GD_EXP_Renorm_alphabeta) + '\n')
 max_EXP_Renorm = np.maximum.reduce([llh_GD_EXP_Renorm_alpha,llh_GD_EXP_Renorm_beta,llh_GD_EXP_Renorm_alphabeta])
+#max_EXP_Renorm = np.maximum.reduce([llh_GD_EXP,max_EXP_Renorm])
 
 print('llh_GD_PWL: ' + repr(llh_GD_PWL) + '\n')
 print('llh_GD_PWL_Renorm_K: ' + repr(llh_GD_PWL_Renorm_K) + '\n')
@@ -112,20 +113,23 @@ print('llh_GD_PWL_Renorm_Kc: ' + repr(llh_GD_PWL_Renorm_Kc) + '\n')
 print('llh_GD_PWL_Renorm_Kp: ' + repr(llh_GD_PWL_Renorm_Kp) + '\n')
 max_PWL_Renorm = np.maximum.reduce([llh_GD_PWL_Renorm_K,llh_GD_PWL_Renorm_c,llh_GD_PWL_Renorm_p])
 max_PWL_Renorm = np.maximum.reduce([max_PWL_Renorm,llh_GD_PWL_Renorm_Kc[:-1],llh_GD_PWL_Renorm_Kp])
+#max_EXP_Renorm = np.maximum.reduce([llh_GD_PWL,max_PWL_Renorm])
 
 print('llh_GD_QEXP: ' + repr(llh_GD_QEXP) + '\n')
 print('llh_GD_QEXP_Renorm_a: ' + repr(llh_GD_QEXP_Renorm_a) + '\n')
 print('lllh_GD_QEXP_Renorm_q: ' + repr(llh_GD_QEXP_Renorm_q) + '\n')
 print('llh_GD_QEXP_Renorm_aq: ' + repr(llh_GD_QEXP_Renorm_aq) + '\n')
 max_QEXP_Renorm = np.maximum.reduce([llh_GD_QEXP_Renorm_a,llh_GD_QEXP_Renorm_q,llh_GD_QEXP_Renorm_aq])
+#max_QEXP_Renorm = np.maximum.reduce([llh_GD_QEXP,max_QEXP_Renorm])
 
 print('llh_GD_RAY: ' + repr(llh_GD_RAY) + '\n')
 print('llh_GD_RAY_Renorm_gamma: ' + repr(llh_GD_RAY_Renorm_gamma) + '\n')
 print('llh_GD_RAY_Renorm_eta: ' + repr(llh_GD_RAY_Renorm_eta) + '\n')
 print('llh_GD_RAY_Renorm_gammaeta: ' + repr(llh_GD_RAY_Renorm_gammaeta) + '\n')
 max_RAY_Renorm = np.maximum.reduce([llh_GD_RAY_Renorm_gamma,llh_GD_RAY_Renorm_eta,llh_GD_RAY_Renorm_gammaeta])
+#max_RAY_Renorm = np.maximum.reduce([llh_GD_RAY,max_RAY_Renorm])
 
-f = open('Exp_Synthetic_Renorm_T1000_eps_0.1_20seq.txt','w')
+f = open('Exp_Synthetic_Renorm_T1000_eps_0.1_10seq.txt','w')
 f.write('llh_GD_EXP: ' + repr(llh_GD_EXP) + '\n')
 f.write('llh_GD_EXP_Renorm_alpha: ' + repr(llh_GD_EXP_Renorm_alpha) + '\n')
 f.write('llh_GD_EXP_Renorm_beta: ' + repr(llh_GD_EXP_Renorm_beta) + '\n')
@@ -154,5 +158,5 @@ f.write('max_RAY_Renorm: ' + repr(max_RAY_Renorm) + '\n')
 
 f.close()
 
-np.savez('llh_arrays_eps_0.1_T1000_20seq.npz', llh_GD_EXP=llh_GD_EXP,llh_GD_EXP_Renorm_alpha=llh_GD_EXP_Renorm_alpha,llh_GD_EXP_Renorm_beta=llh_GD_EXP_Renorm_beta,llh_GD_EXP_Renorm_alphabeta=llh_GD_EXP_Renorm_alphabeta,llh_GD_PWL=llh_GD_PWL,llh_GD_PWL_Renorm_K=llh_GD_PWL_Renorm_K,llh_GD_PWL_Renorm_c=llh_GD_PWL_Renorm_c,llh_GD_PWL_Renorm_p=llh_GD_PWL_Renorm_p,llh_GD_PWL_Renorm_Kc=llh_GD_PWL_Renorm_Kc,llh_GD_PWL_Renorm_Kp=llh_GD_PWL_Renorm_Kp,llh_GD_QEXP=llh_GD_QEXP,llh_GD_QEXP_Renorm_a=llh_GD_QEXP_Renorm_a,llh_GD_QEXP_Renorm_q=llh_GD_QEXP_Renorm_q,llh_GD_QEXP_Renorm_aq=llh_GD_QEXP_Renorm_aq,llh_GD_RAY=llh_GD_RAY,llh_GD_RAY_Renorm_gamma=llh_GD_RAY_Renorm_gamma,llh_GD_RAY_Renorm_eta=llh_GD_RAY_Renorm_eta,llh_GD_RAY_Renorm_gammaeta=llh_GD_RAY_Renorm_gammaeta,max_EXP_Renorm=max_EXP_Renorm,max_PWL_Renorm=max_PWL_Renorm,max_QEXP_Renorm=max_QEXP_Renorm,max_RAY_Renorm=max_RAY_Renorm)
+np.savez('llh_arrays_eps_0.1_T1000_10seq.npz', llh_GD_EXP=llh_GD_EXP,llh_GD_EXP_Renorm_alpha=llh_GD_EXP_Renorm_alpha,llh_GD_EXP_Renorm_beta=llh_GD_EXP_Renorm_beta,llh_GD_EXP_Renorm_alphabeta=llh_GD_EXP_Renorm_alphabeta,llh_GD_PWL=llh_GD_PWL,llh_GD_PWL_Renorm_K=llh_GD_PWL_Renorm_K,llh_GD_PWL_Renorm_c=llh_GD_PWL_Renorm_c,llh_GD_PWL_Renorm_p=llh_GD_PWL_Renorm_p,llh_GD_PWL_Renorm_Kc=llh_GD_PWL_Renorm_Kc,llh_GD_PWL_Renorm_Kp=llh_GD_PWL_Renorm_Kp,llh_GD_QEXP=llh_GD_QEXP,llh_GD_QEXP_Renorm_a=llh_GD_QEXP_Renorm_a,llh_GD_QEXP_Renorm_q=llh_GD_QEXP_Renorm_q,llh_GD_QEXP_Renorm_aq=llh_GD_QEXP_Renorm_aq,llh_GD_RAY=llh_GD_RAY,llh_GD_RAY_Renorm_gamma=llh_GD_RAY_Renorm_gamma,llh_GD_RAY_Renorm_eta=llh_GD_RAY_Renorm_eta,llh_GD_RAY_Renorm_gammaeta=llh_GD_RAY_Renorm_gammaeta,max_EXP_Renorm=max_EXP_Renorm,max_PWL_Renorm=max_PWL_Renorm,max_QEXP_Renorm=max_QEXP_Renorm,max_RAY_Renorm=max_RAY_Renorm)
 
