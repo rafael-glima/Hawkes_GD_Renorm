@@ -90,7 +90,7 @@ for i in range(1,5):
 		llh_GD_RAY_Renorm_eta = np.append(llh_GD_RAY_Renorm_eta,RAY_Param['llh_renorm_eta'])
 
 		llh_GD_EXP_Renorm_alphabeta = np.append(llh_GD_EXP_Renorm_alphabeta,EXP_Param['llh_renorm_sqrt'])
-		llh_GD_PWL_Renorm_Kc = np.append(llh_GD_PWL_Renorm_p,PWL_Param['llh_renorm_Kc'])
+		llh_GD_PWL_Renorm_Kc = np.append(llh_GD_PWL_Renorm_Kc,PWL_Param['llh_renorm_Kc'])
 		llh_GD_QEXP_Renorm_aq = np.append(llh_GD_QEXP_Renorm_aq,QEXP_Param['llh_renorm_sqrt'])
 		llh_GD_RAY_Renorm_gammaeta = np.append(llh_GD_RAY_Renorm_gammaeta,RAY_Param['llh_renorm_sqrt'])
 
